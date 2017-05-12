@@ -1,0 +1,52 @@
+{
+  "name": "vue-ripple-directive",
+  "version": "1.0.0",
+  "description": "Vue Material Ripple Effect Directive",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PygmySlowLoris/vue-ripple-directive"
+  },
+  "keywords": [
+    "vue",
+    "ripple",
+    "material",
+    "directive",
+    "ripple effect",
+    "button"
+  ],
+  "author": {
+    "name": "PygmySlowLoris Team",
+    "email": "team@pygmyslowloris.org",
+    "url": "https://github.com/PygmySlowLoris"
+  },
+  "contributors": [
+    "Guido Ceraso <guidoceraso@gmail.com> (https://github.com/hazzo)",
+    "Eduardo Marcos <edujugon@gmail.com> (https://github.com/Edujugon)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PygmySlowLoris/vue-fab/issues"
+  },
+  "homepage": "https://github.com/PygmySlowLoris/vue-ripple-effect#readme",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-latest": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^11.1.4",
+    "vue-template-compiler": "^2.2.1",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  }
+}
