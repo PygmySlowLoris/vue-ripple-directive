@@ -7,7 +7,7 @@ This directive it's meant to be used in any element in which you like to achieve
 ##  Installation
 
 ```
-npm install vue-ripple-effect --save
+npm install vue-ripple-directive --save
 ```
 
 ##  Options
