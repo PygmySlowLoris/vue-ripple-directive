@@ -2,7 +2,7 @@
   "name": "vue-ripple-directive",
   "version": "1.0.3",
   "description": "Vue Material Ripple Effect Directive",
-  "main": "src/index.js",
+  "main": "src/ripple.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/PygmySlowLoris/vue-ripple-directive"
