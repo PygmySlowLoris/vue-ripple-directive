@@ -24,7 +24,7 @@ Optional parameter to pass to the directive.
 First you need to import the directive and add it to Vue.
 
 ```
-import Ripple from 'vue-ripple-effect'
+import Ripple from 'vue-ripple-directive'
 
 Vue.directive('ripple', Ripple);
 ```
