@@ -4,6 +4,8 @@ Material Ripple Effect as Vue Directive.
 
 This directive it's meant to be used in any element in which you like to achieve such ripple effect.
 
+<a href="https://pygmyslowloris.github.io/vue-ripple-directive/"> Live Demo</a>
+
 ##  Installation
 
 ```
