@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="columns">
                                     <div class="column has-text-centered">
-                                        <a href="https://github.com/PygmySlowLoris/vue-ripple-directive">Code usage & samples</a>
+                                        <a href="https://github.com/PygmySlowLoris/vue-ripple-directive">Installation & Code usage</a>
                                     </div>
                                 </div>
                             </div>
