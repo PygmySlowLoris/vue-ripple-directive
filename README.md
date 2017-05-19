@@ -20,6 +20,20 @@ Optional parameter to pass to the directive.
 | :--------------- | :-------  | :--------- |
 |  `color-value`      | String    |  <b>Default: 'rgba(0, 0, 0, 0.35)'</b>. <br> Accepts either HEX, RGB & RGBA values. For optimal look use RGBA with low opacity. |
 
+##  Modifiers
+
+By default this directive attaches a click handler to the element as well as the transition is set for 600ms.
+For those who wants to modify the same, just pass modifiers to the directive:
+
+```
+v-ripple.mouseover.500
+```
+
+Can also modify only one
+
+```
+v-ripple.mouseover
+```
 
 ##  Sample & Usage
 
