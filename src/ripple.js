@@ -1,8 +1,16 @@
-
 export default {
     name: 'ripple',
     bind (el, binding) {
-        el.addEventListener('click', (event) => {
+
+        // Default values.
+        const props = {
+            event: 'click',
+            transition: 600
+        };
+
+        setProps(Object.keys(binding.modifiers),props);
+
+        el.addEventListener(props.event, (event) => {
             rippler(event, el, binding.value);
         });
 
@@ -33,7 +41,7 @@ export default {
             ripple.style.marginLeft= '0px';
             ripple.style.width= '1px';
             ripple.style.height= '1px';
-            ripple.style.transition= 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            ripple.style.transition= `all ${props.transition}ms cubic-bezier(0.4, 0, 0.2, 1)`;
             ripple.style.borderRadius= '50%';
             ripple.style.pointerEvents= 'none';
             ripple.style.position= 'relative';
@@ -82,4 +90,13 @@ export default {
             }, 650);
         }
     }
+}
+
+function setProps(modifiers,props) {
+    modifiers.forEach((item) => {
+        if(isNaN(Number(item)))
+            props.event = item;
+        else
+            props.transition = item;
+    });
 }
