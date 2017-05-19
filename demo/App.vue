@@ -48,9 +48,9 @@
                                         <div>
                                             <table class="table is-striped">
                                                 <thead>
-                                                <tr v-ripple>
-                                                    <th>One</th>
-                                                    <th>Two</th>
+                                                <tr>
+                                                    <th v-ripple.dblclick>One <small>(Double Click)</small></th>
+                                                    <th v-ripple.mouseover>Two <small>(MouseOver)</small></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -62,8 +62,8 @@
                                             </table>
                                         </div>
                                         <div>
-                                            <div v-ripple="'rgba(255, 255, 255, 0.35)'" class="button is-primary" style="margin: .5rem">This is a button</div>
-                                            <a  v-ripple="'rgba(230, 68, 3, 0.71)'" class="button is-success is-outlined" style="text-decoration: none; margin: .5rem">This is an Outlined</a>
+                                            <div v-ripple.mouseover="'rgba(255, 255, 255, 0.35)'" class="button is-primary" style="margin: .5rem">MouseOver</div>
+                                            <a  v-ripple.mouseout="'rgba(230, 68, 3, 0.71)'" class="button is-success is-outlined" style="text-decoration: none; margin: .5rem">MouseOut</a>
                                         </div>
                                         <div>
                                             <span v-ripple="'rgba(99, 249, 8, 0.71)'" class="tag is-info pointer">Info</span>
