@@ -1,6 +1,5 @@
 export default {
-    name: 'ripple',
-    bind (el, binding) {
+    bind: function(el, binding){
 
         // Default values.
         const props = {
@@ -10,17 +9,17 @@ export default {
 
         setProps(Object.keys(binding.modifiers),props);
 
-        el.addEventListener(props.event, (event) => {
+        el.addEventListener(props.event, function(event) {
             rippler(event, el, binding.value);
         });
 
-        let bg = binding.value || 'rgba(0, 0, 0, 0.35)';
+        var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
-            let target = el;
+            var target = el;
 
             // Get necessary variables
-            let rect        = target.getBoundingClientRect(),
+            var rect        = target.getBoundingClientRect(),
                 left        = rect.left,
                 top         = rect.top,
                 width       = target.offsetWidth,
@@ -33,7 +32,7 @@ export default {
                 radius      = Math.sqrt((maxX * maxX) + (maxY * maxY));
 
             // Create the ripple and its container
-            let ripple = document.createElement("div"),
+            var ripple = document.createElement("div"),
                 rippleContainer = document.createElement("div");
 
             //Styles for ripple
@@ -41,13 +40,13 @@ export default {
             ripple.style.marginLeft= '0px';
             ripple.style.width= '1px';
             ripple.style.height= '1px';
-            ripple.style.transition= `all ${props.transition}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+            ripple.style.transition= 'all ' + props.transition + 'ms cubic-bezier(0.4, 0, 0.2, 1)';
             ripple.style.borderRadius= '50%';
             ripple.style.pointerEvents= 'none';
             ripple.style.position= 'relative';
             ripple.style.zIndex= '9999';
             ripple.style.backgroundColor  = bg;
-            
+
             //Styles for rippleContainer
             rippleContainer.style.position= 'absolute';
             rippleContainer.style.left = '0';
@@ -56,7 +55,7 @@ export default {
             rippleContainer.style.width = '0';
             rippleContainer.style.pointerEvents = 'none';
             rippleContainer.style.overflow = 'hidden';
-            
+
             rippleContainer.appendChild(ripple);
             document.body.appendChild(rippleContainer);
 
@@ -93,7 +92,7 @@ export default {
 }
 
 function setProps(modifiers,props) {
-    modifiers.forEach((item) => {
+    modifiers.forEach(function(item) {
         if(isNaN(Number(item)))
             props.event = item;
         else
