@@ -3,7 +3,7 @@ export default {
 
         // Default values.
         const props = {
-            event: 'click',
+            event: 'mousedown',
             transition: 600
         };
 
@@ -72,21 +72,33 @@ export default {
             rippleContainer.style.borderBottomRightRadius  = style.borderBottomRightRadius;
 
             setTimeout(function() {
-
                 ripple.style.width  = radius * 2 + "px";
                 ripple.style.height = radius * 2 + "px";
                 ripple.style.marginLeft   = dx - radius + "px";
                 ripple.style.marginTop    = dy - radius + "px";
             }, 0);
 
-            setTimeout(function() {
-                ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            }, 250);
+            if(event.type == 'mousedown') {
+                el.addEventListener('mouseup', function (event) {
+                    setTimeout(function() {
+                        ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                    }, 250);
 
-            setTimeout(function() {
-                ripple.remove();
-                rippleContainer.remove();
-            }, 650);
+                    setTimeout(function() {
+                        ripple.remove();
+                        rippleContainer.remove();
+                    }, 750);
+                })
+            } else {
+                setTimeout(function() {
+                    ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                }, 250);
+
+                setTimeout(function() {
+                    ripple.remove();
+                    rippleContainer.remove();
+                }, 650);
+            }
         }
     }
 }
