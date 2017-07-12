@@ -2,7 +2,7 @@ export default {
     bind: function(el, binding){
 
         // Default values.
-        const props = {
+        var props = {
             event: 'mousedown',
             transition: 600
         };
@@ -16,6 +16,7 @@ export default {
         var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
+            console.log(event);
             var target = el;
 
             // Get necessary variables
@@ -78,15 +79,17 @@ export default {
                 ripple.style.marginTop    = dy - radius + "px";
             }, 0);
 
-            if(event.type == 'mousedown') {
+            if(event.type === 'mousedown') {
                 el.addEventListener('mouseup', function (event) {
                     setTimeout(function() {
                         ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                     }, 250);
 
                     setTimeout(function() {
-                        ripple.remove();
-                        rippleContainer.remove();
+                        // ripple.remove();
+                        // rippleContainer.remove();
+                        ripple.parentNode.removeChild(ripple);
+                        rippleContainer.parentNode.removeChild(rippleContainer);
                     }, 750);
                 })
             } else {
@@ -95,8 +98,10 @@ export default {
                 }, 250);
 
                 setTimeout(function() {
-                    ripple.remove();
-                    rippleContainer.remove();
+                    ripple.parentNode.removeChild(ripple);
+                    rippleContainer.parentNode.removeChild(rippleContainer);
+                    // ripple.remove();
+                    // rippleContainer.remove();
                 }, 650);
             }
         }
