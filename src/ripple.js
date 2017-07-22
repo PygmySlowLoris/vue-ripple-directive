@@ -16,6 +16,7 @@ export default {
         var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
+            console.log(event);
             var target = el;
 
             // Get necessary variables
@@ -83,20 +84,17 @@ export default {
                     setTimeout(function() {
                         ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                     }, 250);
-
-                    setTimeout(function() {
-                        ripple.remove();
-                        rippleContainer.remove();
-                    }, 750);
                 })
+                setTimeout(function() {
+                    rippleContainer.parentNode.removeChild(rippleContainer);
+                }, 650);
             } else {
                 setTimeout(function() {
                     ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                 }, 250);
 
                 setTimeout(function() {
-                    ripple.remove();
-                    rippleContainer.remove();
+                    rippleContainer.parentNode.removeChild(rippleContainer);
                 }, 650);
             }
         }
