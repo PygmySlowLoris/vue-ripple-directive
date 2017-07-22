@@ -16,7 +16,6 @@ export default {
         var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
-            console.log(event);
             var target = el;
 
             // Get necessary variables
