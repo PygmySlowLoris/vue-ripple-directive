@@ -16,7 +16,6 @@ export default {
         var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
-            console.log(event);
             var target = el;
 
             // Get necessary variables
@@ -86,10 +85,8 @@ export default {
                     }, 250);
 
                     setTimeout(function() {
-                        // ripple.remove();
-                        // rippleContainer.remove();
-                        ripple.parentNode.removeChild(ripple);
-                        rippleContainer.parentNode.removeChild(rippleContainer);
+                        ripple.remove();
+                        rippleContainer.remove();
                     }, 750);
                 })
             } else {
@@ -98,10 +95,8 @@ export default {
                 }, 250);
 
                 setTimeout(function() {
-                    ripple.parentNode.removeChild(ripple);
-                    rippleContainer.parentNode.removeChild(rippleContainer);
-                    // ripple.remove();
-                    // rippleContainer.remove();
+                    ripple.remove();
+                    rippleContainer.remove();
                 }, 650);
             }
         }
