@@ -84,8 +84,11 @@ export default {
                         ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                     }, 250);
 
+                    // Timeout set to get a smooth removal of the ripple
                     setTimeout(function() {
-                        rippleContainer.parentNode.removeChild(rippleContainer);
+                        // Conditional to avoid not finding parent when to many ripples are executed
+                        if (rippleContainer.parentNode)
+                            rippleContainer.parentNode.removeChild(rippleContainer);
                     }, 850);
                 })
             } else {
@@ -93,8 +96,11 @@ export default {
                     ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                 }, 250);
 
+                // Timeout set to get a smooth removal of the ripple
                 setTimeout(function() {
-                    rippleContainer.parentNode.removeChild(rippleContainer);
+                    // Conditional to avoid not finding parent when to many ripples are executed
+                    if (rippleContainer.parentNode)
+                        rippleContainer.parentNode.removeChild(rippleContainer);
                 }, 850);
             }
         }
