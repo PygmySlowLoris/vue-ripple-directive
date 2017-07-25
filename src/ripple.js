@@ -78,30 +78,23 @@ export default {
                 ripple.style.marginTop    = dy - radius + "px";
             }, 0);
 
-            if(event.type === 'mousedown') {
-                el.addEventListener('mouseup', function (event) {
-                    setTimeout(function() {
-                        ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
-                    }, 250);
-
-                    // Timeout set to get a smooth removal of the ripple
-                    setTimeout(function() {
-                        // Conditional to avoid not finding parent when to many ripples are executed
-                        if (rippleContainer.parentNode)
-                            rippleContainer.parentNode.removeChild(rippleContainer);
-                    }, 850);
-                })
-            } else {
+            function clearRipple() {
                 setTimeout(function() {
                     ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
                 }, 250);
 
                 // Timeout set to get a smooth removal of the ripple
                 setTimeout(function() {
-                    // Conditional to avoid not finding parent when to many ripples are executed
-                    if (rippleContainer.parentNode)
-                        rippleContainer.parentNode.removeChild(rippleContainer);
+                    rippleContainer.parentNode.removeChild(rippleContainer);
                 }, 850);
+
+                el.removeEventListener('mouseup', clearRipple, false);
+            }
+
+            if(event.type === 'mousedown') {
+                el.addEventListener('mouseup', clearRipple, false);
+            } else {
+                clearRipple();
             }
         }
     }
