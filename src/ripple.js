@@ -71,6 +71,8 @@ export default {
             rippleContainer.style.borderBottomLeftRadius  = style.borderBottomLeftRadius;
             rippleContainer.style.borderBottomRightRadius  = style.borderBottomRightRadius;
 
+            rippleContainer.style.direction = 'ltr';
+
             setTimeout(function() {
                 ripple.style.width  = radius * 2 + "px";
                 ripple.style.height = radius * 2 + "px";
