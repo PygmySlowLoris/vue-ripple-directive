@@ -26,9 +26,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PygmySlowLoris/vue-fab/issues"
+    "url": "https://github.com/PygmySlowLoris/vue-ripple-directive/issues"
   },
-  "homepage": "https://github.com/PygmySlowLoris/vue-ripple-effect#readme",
+  "homepage": "https://github.com/PygmySlowLoris/vue-ripple-directive#readme",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
