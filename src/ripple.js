@@ -56,14 +56,22 @@ export default {
             rippleContainer.style.pointerEvents = 'none';
             rippleContainer.style.overflow = 'hidden';
 
+            // Store target position to change it after
+            var storedTargetPosition =  target.style.position;
+            // Change target position to relative to guarantee ripples correct positioning
+            target.style.position = 'relative';
+
             rippleContainer.appendChild(ripple);
-            document.body.appendChild(rippleContainer);
+            target.appendChild(rippleContainer);
+
+            console.log();
 
             ripple.style.marginLeft   = dx + "px";
             ripple.style.marginTop    = dy + "px";
 
-            rippleContainer.style.left    = left + (((window.pageXOffset || document.scrollLeft) - (document.clientLeft || 0)) || 0) + "px";
-            rippleContainer.style.top     = top + (((window.pageYOffset || document.scrollTop) - (document.clientTop || 0)) || 0) + "px";
+            // No need to set positioning because ripple should be child of target and to it's relative position.
+            // rippleContainer.style.left    = left + (((window.pageXOffset || document.scrollLeft) - (document.clientLeft || 0)) || 0) + "px";
+            // rippleContainer.style.top     = top + (((window.pageYOffset || document.scrollTop) - (document.clientTop || 0)) || 0) + "px";
             rippleContainer.style.width   = width + "px";
             rippleContainer.style.height  = height + "px";
             rippleContainer.style.borderTopLeftRadius  = style.borderTopLeftRadius;
@@ -89,6 +97,12 @@ export default {
                 }, 850);
 
                 el.removeEventListener('mouseup', clearRipple, false);
+
+                // After removing event set position to target to it's original one
+                // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
+                setTimeout(function () {
+                    target.style.position = storedTargetPosition;
+                }, props.transition + 250)
             }
 
             if(event.type === 'mousedown') {
