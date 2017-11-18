@@ -12,8 +12,8 @@ export default {
         el.addEventListener(props.event, function(event) {
             rippler(event, el, binding.value);
         });
-
-        var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
+        var _globalColor = window.$rippleOptions && window.$rippleOptions.globalColor;
+        var bg = binding.value || _globalColor || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
             var target = el;

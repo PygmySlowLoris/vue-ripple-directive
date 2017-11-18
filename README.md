@@ -49,6 +49,14 @@ import Ripple from 'vue-ripple-directive'
 Vue.directive('ripple', Ripple);
 ```
 
+If you need set a global color
+
+```
+window.$rippleOptions = {
+  globalColor: 'rgba(255, 255, 255, 0.35)'
+}
+```
+
 Then use on any element you want to achieve the effect.
 
 ```
