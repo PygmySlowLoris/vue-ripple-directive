@@ -1,4 +1,4 @@
-export default {
+var Ripple = {
     bind: function(el, binding){
 
         // Default values.
@@ -13,7 +13,7 @@ export default {
             rippler(event, el, binding.value);
         });
 
-        var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
+        var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
 
         function rippler(event, el) {
             var target = el;
@@ -100,7 +100,7 @@ export default {
             }
         }
     }
-}
+};
 
 function setProps(modifiers,props) {
     modifiers.forEach(function(item) {
@@ -110,3 +110,5 @@ function setProps(modifiers,props) {
             props.transition = item;
     });
 }
+
+export default Ripple;
