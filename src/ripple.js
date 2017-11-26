@@ -14,6 +14,7 @@ var Ripple = {
         });
 
         var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
+        var zIndex = Ripple.zIndex || '9999';
 
         function rippler(event, el) {
             var target = el;
@@ -44,7 +45,7 @@ var Ripple = {
             ripple.style.borderRadius= '50%';
             ripple.style.pointerEvents= 'none';
             ripple.style.position= 'relative';
-            ripple.style.zIndex= '9999';
+            ripple.style.zIndex= zIndex;
             ripple.style.backgroundColor  = bg;
 
             //Styles for rippleContainer
