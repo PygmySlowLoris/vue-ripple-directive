@@ -1,4 +1,4 @@
-export default {
+var Ripple = {
     bind: function(el, binding){
 
         // Default values.
@@ -13,10 +13,13 @@ export default {
             rippler(event, el, binding.value);
         });
 
-        var bg = binding.value || 'rgba(0, 0, 0, 0.35)';
+        var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
+        var zIndex = Ripple.zIndex || '9999';
 
         function rippler(event, el) {
             var target = el;
+            // Get border to avoid offsetting on ripple container position
+            var targetBorder = parseInt((getComputedStyle(target).borderWidth).replace('px', ''));
 
             // Get necessary variables
             var rect        = target.getBoundingClientRect(),
@@ -29,11 +32,14 @@ export default {
                 maxX        = Math.max(dx, width - dx),
                 maxY        = Math.max(dy, height - dy),
                 style       = window.getComputedStyle(target),
-                radius      = Math.sqrt((maxX * maxX) + (maxY * maxY));
+                radius      = Math.sqrt((maxX * maxX) + (maxY * maxY)),
+                border      = (targetBorder > 0 ) ? targetBorder : 0;
 
             // Create the ripple and its container
             var ripple = document.createElement("div"),
                 rippleContainer = document.createElement("div");
+                rippleContainer.className = 'ripple-container';
+                ripple.className = 'ripple';
 
             //Styles for ripple
             ripple.style.marginTop= '0px';
@@ -44,27 +50,27 @@ export default {
             ripple.style.borderRadius= '50%';
             ripple.style.pointerEvents= 'none';
             ripple.style.position= 'relative';
-            ripple.style.zIndex= '9999';
+            ripple.style.zIndex= zIndex;
             ripple.style.backgroundColor  = bg;
 
             //Styles for rippleContainer
             rippleContainer.style.position= 'absolute';
-            rippleContainer.style.left = '0';
-            rippleContainer.style.top = '0';
+            rippleContainer.style.left = 0 - border + 'px';
+            rippleContainer.style.top = 0 - border + 'px';
             rippleContainer.style.height = '0';
             rippleContainer.style.width = '0';
             rippleContainer.style.pointerEvents = 'none';
             rippleContainer.style.overflow = 'hidden';
 
             // Store target position to change it after
-            var storedTargetPosition =  target.style.position;
+            var storedTargetPosition =  ((target.style.position).length > 0) ? target.style.position : getComputedStyle(target).position;
             // Change target position to relative to guarantee ripples correct positioning
-            target.style.position = 'relative';
+            if (storedTargetPosition !== 'relative') {
+                target.style.position = 'relative';
+            }
 
             rippleContainer.appendChild(ripple);
             target.appendChild(rippleContainer);
-
-            console.log();
 
             ripple.style.marginLeft   = dx + "px";
             ripple.style.marginTop    = dy + "px";
@@ -78,6 +84,8 @@ export default {
             rippleContainer.style.borderTopRightRadius  = style.borderTopRightRadius;
             rippleContainer.style.borderBottomLeftRadius  = style.borderBottomLeftRadius;
             rippleContainer.style.borderBottomRightRadius  = style.borderBottomRightRadius;
+
+            rippleContainer.style.direction = 'ltr';
 
             setTimeout(function() {
                 ripple.style.width  = radius * 2 + "px";
@@ -101,7 +109,22 @@ export default {
                 // After removing event set position to target to it's original one
                 // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
                 setTimeout(function () {
-                    target.style.position = storedTargetPosition;
+
+                    var clearPosition = true;
+                    for(var i = 0; i < target.childNodes.length; i++) {
+                        if(target.childNodes[i].className === 'ripple-container') {
+                            clearPosition = false;
+                        }
+                    }
+
+                    if(clearPosition) {
+                        if(storedTargetPosition !== 'static') {
+                            target.style.position = storedTargetPosition;
+                        } else {
+                            target.style.position = '';
+                        }
+                    }
+
                 }, props.transition + 250)
             }
 
@@ -112,7 +135,7 @@ export default {
             }
         }
     }
-}
+};
 
 function setProps(modifiers,props) {
     modifiers.forEach(function(item) {
@@ -122,3 +145,5 @@ function setProps(modifiers,props) {
             props.transition = item;
     });
 }
+
+export default Ripple;

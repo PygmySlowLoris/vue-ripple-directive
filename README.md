@@ -16,6 +16,11 @@ This directive it's meant to be used in any element in which you like to achieve
 npm install vue-ripple-directive --save
 ```
 
+>### Important Notice
+>The directive will work better if the element where you attach it is **relative positioned**. 
+>Although the directive will try to set `position: relative` if the element does not have this property.
+>This is because the ripple since v2.0.* is `position: absolute`, to avoid trailing issues when elements with the directive in the UI move.
+
 ##  Options
 
 Optional parameter to pass to the directive.
@@ -59,4 +64,16 @@ If you want a custom color just pass a color parameter as `string`. It's best if
 
 ```
 <div v-ripple="'rgba(255, 255, 255, 0.35)'"  class="button">I have different color</div>
+```
+
+##  Global settings
+
+You can set the default color and z-index for all your ripples as the following example
+
+```
+import Ripple from 'vue-ripple-directive'
+
+Ripple.color = 'rgba(255, 255, 255, 0.35)';
+Ripple.zIndex = 55;
+Vue.directive('ripple', Ripple);
 ```
