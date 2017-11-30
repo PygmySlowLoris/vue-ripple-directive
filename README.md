@@ -19,7 +19,7 @@ npm install vue-ripple-directive --save
 >### Important Notice
 >The directive will work better if the element where you attach it is **relative positioned**. 
 >Although the directive will try to set `position: relative` if the element does not have this property.
->This is because the ripple since v2.0.* is `position: absolute`, to avoid trailing issues when elements with the directive in the UI move.
+>This is because since v2.0.* the ripple directive changed its positioning method to avoid trailing issues when elements in the UI move, causing the ripple to stay in previous position and not in the one that element moved to.
 
 ##  Options
 
