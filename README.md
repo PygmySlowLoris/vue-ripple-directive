@@ -16,6 +16,11 @@ This directive it's meant to be used in any element in which you like to achieve
 npm install vue-ripple-directive --save
 ```
 
+>### Important Notice
+>The directive will work better if the element where you attach it is **relative positioned**. 
+>Although the directive will try to set `position: relative` if the element does not have this property.
+>This is because the ripple since v2.0.* is `position: absolute`, to avoid trailing issues when elements with the directive in the UI move.
+
 ##  Options
 
 Optional parameter to pass to the directive.
