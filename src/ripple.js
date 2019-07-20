@@ -1,5 +1,6 @@
 var Ripple = {
     bind: function(el, binding){
+        if (binding.value === false) return;
 
         // Default values.
         var props = {
@@ -13,7 +14,7 @@ var Ripple = {
             rippler(event, el, binding.value);
         });
 
-        var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
+        var bg = typeof binding.value === 'string' && binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
         var zIndex = Ripple.zIndex || '9999';
 
         function rippler(event, el) {
