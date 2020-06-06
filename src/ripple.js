@@ -20,6 +20,9 @@ var Ripple = {
             var target = el;
             // Get border to avoid offsetting on ripple container position
             var targetBorder = parseInt((getComputedStyle(target).borderWidth).replace('px', ''));
+            
+            var clientX = event.clientX || event.touches[0].clientX
+            var clientY = event.clientY || event.touches[0].clientY
 
             // Get necessary variables
             var rect        = target.getBoundingClientRect(),
@@ -27,8 +30,8 @@ var Ripple = {
                 top         = rect.top,
                 width       = target.offsetWidth,
                 height      = target.offsetHeight,
-                dx          = event.clientX - left,
-                dy          = event.clientY - top,
+                dx          = clientX - left,
+                dy          = clientY - top,
                 maxX        = Math.max(dx, width - dx),
                 maxY        = Math.max(dy, height - dy),
                 style       = window.getComputedStyle(target),
