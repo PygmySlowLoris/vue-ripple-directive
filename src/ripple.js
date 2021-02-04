@@ -104,7 +104,7 @@ var Ripple = {
                     rippleContainer.parentNode.removeChild(rippleContainer);
                 }, 850);
 
-                el.removeEventListener('mouseup', clearRipple, false);
+                document.removeEventListener('mouseup', clearRipple, false);
 
                 // After removing event set position to target to it's original one
                 // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
@@ -129,7 +129,7 @@ var Ripple = {
             }
 
             if(event.type === 'mousedown') {
-                el.addEventListener('mouseup', clearRipple, false);
+                document.addEventListener('mouseup', clearRipple, false);
             } else {
                 clearRipple();
             }
